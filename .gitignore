@@ -1,0 +1,44 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.*
+.venv/
+venv/
+# Virtual env
+venv/
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyd
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+# Logs
+*.log
+# IDEs
+.vscode/
+.idea/
+# Keys and certs
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+# OS files
+Thumbs.db
+Desktop.ini
+# GitHub actions and secrets
+secrets.yml
+# Data
+*.sqlite3
+*.db
+# Large files
+*.zip
+*.tar.gz
+# Misc
+.DS_Store
