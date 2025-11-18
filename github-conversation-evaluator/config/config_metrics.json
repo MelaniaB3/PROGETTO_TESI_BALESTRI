@@ -1,0 +1,227 @@
+[
+    {
+      "metric_name": "Diagnostic_Effectiveness",
+      "description": "Did the agent correctly identify and formalize the root cause of the failure?",
+      "value_type": "boolean",
+      "scoring_criteria": [
+        {
+          "score": true,
+          "description": "Assign this score if the agent explicitly states the correct root cause (as defined in the Ground Truth) and concludes the diagnostic part of the conversation."
+        },
+        {
+          "score": false,
+          "description": "Assign this score if the agent concludes the dialogue with an incorrect root cause, or never clearly identifies it, getting stuck on superficial details."
+        }
+      ]
+    },
+    {
+      "metric_name": "Conversational_Coherence",
+      "description": "Is the technical information discussed factually accurate and consistent with the Ground Truth?",
+      "value_type": "boolean",
+      "scoring_criteria": [
+        {
+          "score": true,
+          "description": "Assign this score if all technical details mentioned by the agent and the technician are consistent with the Ground Truth. There are no factual errors or hallucinations."
+        },
+        {
+          "score": false,
+          "description": "Assign this score if the agent or the technician invents technical details not present in the Ground Truth or makes factually incorrect statements to reach a conclusion."
+        }
+      ]
+    },
+    {
+      "metric_name": "Extraction_Completeness",
+      "description": "Measures the depth of information gathered beyond the root cause.",
+      "value_type": "integer",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "Insufficient Extraction",
+          "description": "The agent only identifies superficial symptoms or fails to clearly state the root cause."
+        },
+        {
+          "score": 2,
+          "label": "Superficial Extraction",
+          "description": "The agent identifies the root cause ('the what') but extracts no additional context about the 'why' or 'how'. The dialogue is purely transactional."
+        },
+        {
+          "score": 3,
+          "label": "Adequate Extraction",
+          "description": "The agent extracts the root cause AND the immediate context that explains it. The technician's main diagnostic reasoning has been captured."
+        },
+        {
+          "score": 4,
+          "label": "Exhaustive Extraction",
+          "description": "The agent extracts the root cause, the context, AND deeper tacit knowledge (e.g., undocumented procedures, expert insights, 'tricks of the trade')."
+        }
+      ]
+    },
+    {
+      "metric_name": "Conversational_Efficiency",
+      "description": "Counts the number of interviewer dialogue turns required to achieve the primary objective.",
+      "value_type": "integer",
+      "scoring_rule": {
+        "description": "A positive integer representing the number of turns from the Agent. Calculated only for conversations that scored 'true' on Diagnostic_Effectiveness. Otherwise, the value is null or N/A."
+      }
+    },
+    {
+      "metric_name": "Knowledge_Origin",
+      "description": "Qualifies the origin of the information that led to the solution.",
+      "value_type": "string",
+      "scoring_criteria": [
+        {
+          "score": "EXPLICIT",
+          "description": "The final diagnosis could have been reached using only the information present in the initial ticket description."
+        },
+        {
+          "score": "TACIT",
+          "description": "The final diagnosis was impossible to reach without the unique, unstated experience and knowledge of the technician."
+        },
+        {
+          "score": "MIXED",
+          "description": "The initial ticket provided a clue, but the final diagnosis required the technician's tacit knowledge to interpret and correctly build on that clue."
+        }
+      ]
+    },
+    {
+      "metric_name": "Protocol_Adherence",
+      "description": "Assesses fidelity to the structured reasoning protocol",
+      "value_type": "integer",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "Complete Deviation",
+          "description": "The agent completely ignored the SOP, asking questions in a random or unstructured order."
+        },
+        {
+          "score": 2,
+          "label": "Significant Deviation",
+          "description": "The agent attempted to follow the SOP but made multiple, major errors (e.g., asking multiple questions at once, skipping key diagnostic phases)."
+        },
+        {
+          "score": 3,
+          "label": "Partial Adherence",
+          "description": "The agent followed the general structure of the SOP but with occasional, minor errors (e.g., forgetting an 'Active Confirmation' step)."
+        },
+        {
+          "score": 4,
+          "label": "High Adherence",
+          "description": "The agent followed all steps of the SOP with minimal and insignificant deviations."
+        },
+        {
+          "score": 5,
+          "label": "Flawless Adherence",
+          "description": "The agent executed the SOP perfectly, following every directive from start to finish."
+        },
+        {
+          "score": "N/A",
+          "label": "Not Applicable",
+          "description": "Assign this if the approach is not possible."
+        }
+      ]
+    },
+    {
+      "metric_name": "Conversational_Adaptability",
+      "description": "Valuta quanto l'intervistatore ha adattato dinamicamente stile, registro e strategia al profilo del tecnico; scala Likert a 5 punti (1 = nessuna adattamento, 5 = adattamento eccellente).",
+      "value_type": "likert_5",
+      "applicable_to": "all",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "1 - Nessuna adattamento",
+          "description": "L'agente ha mantenuto uno script rigido, ignorando segnali di confusione, competenza o contesto del tecnico."
+        },
+        {
+          "score": 2,
+          "label": "2 - Minimo adattamento",
+          "description": "L'agente ha mostrato solo piccoli aggiustamenti formali (poche frasi), senza cambiare il contenuto o lo stile delle domande."
+        },
+        {
+          "score": 3,
+          "label": "3 - Moderato adattamento",
+          "description": "L'agente ha modulato il linguaggio e alcune domande in base al profilo del tecnico, ma in modo non consistente o poco profondo."
+        },
+        {
+          "score": 4,
+          "label": "4 - Buon adattamento",
+          "description": "L'agente ha adattato in modo chiaro stile e profondità delle domande, facilitando l'estrazione di informazioni rilevanti."
+        },
+        {
+          "score": 5,
+          "label": "5 - Eccellente adattamento",
+          "description": "L'agente ha adattato dinamicamente linguaggio, pacing e strategia, massimizzando la qualità e la quantità delle informazioni raccolte."
+        }
+      ]
+    },
+    {
+      "metric_name": "Task_Success_Index",
+      "description": "Provides a holistic assessment of the overall quality with which the agent handled the conversation.",
+      "value_type": "integer",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "Task Failure",
+          "description": "The objective was not met, and the conversation derailed or was confusing."
+        },
+        {
+          "score": 2,
+          "label": "Success with Difficulty",
+          "description": "The objective was met, but the process was clumsy, inefficient, or unnatural. The agent seemed robotic and struggled to manage the interaction."
+        },
+        {
+          "score": 3,
+          "label": "Standard Success",
+          "description": "The objective was achieved effectively. The conversation was competent and professional, with only minor imperfections."
+        },
+        {
+          "score": 4,
+          "label": "Excellent Success",
+          "description": "The objective was achieved with excellence. The conversation was fluid, efficient, and natural, similar to an interaction with a human expert."
+        }
+      ]
+    },
+    {
+      "metric_name": "Diagnostic_Initiative_Index",
+      "description": "Assesses the interviewer's initiative in going beyond the basic SOP questions.",
+      "value_type": "integer",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "Passive",
+          "description": "The agent acted as a simple form-filler, never deviating from the prescribed SOP questions."
+        },
+        {
+          "score": 2,
+          "label": "Reactive",
+          "description": "The agent asked for clarification only when a response was too ambiguous to proceed with the script."
+        },
+        {
+          "score": 3,
+          "label": "Proactive",
+          "description": "The agent demonstrated curiosity by asking at least one non-SOP follow-up question to explore an interesting detail."
+        }
+      ]
+    },
+    {
+      "metric_name": "Lexical_Adaptation_Index",
+      "description": "Assesses whether the interviewer adapts their language to the technician's style.",
+      "value_type": "integer",
+      "scoring_criteria": [
+        {
+          "score": 1,
+          "label": "No Adaptation",
+          "description": "The agent's vocabulary remained static and generic, ignoring the technician's terminology."
+        },
+        {
+          "score": 2,
+          "label": "Partial Adaptation",
+          "description": "The agent occasionally repeated a technical term but did not integrate it into its own vocabulary."
+        },
+        {
+          "score": 3,
+          "label": "High Adaptation",
+          "description": "The agent actively adopted and correctly reused specific technical terms introduced by the technician, demonstrating learning from context."
+        }
+      ]
+    }
+  ]
