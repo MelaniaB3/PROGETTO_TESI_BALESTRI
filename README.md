@@ -1,33 +1,84 @@
-Capitalizing Tacit Knowledge: An AI Conversational Framework for Industrial Maintenance
-🚀 UX Research & AI-Augmented Prototyping
-This repository contains the technical infrastructure and datasets developed for my Master’s Thesis in Communication Strategies & Techniques. The project focuses on bridging the "Information Asymmetry" in industrial maintenance through an advanced Conversational AI Assistant.
-📌 Project Overview
-In industrial environments, expert technicians possess valuable tacit knowledge (the "Expert Tricks") that is systematically lost during manual reporting. This leads to the "Double-Trip Syndrome": repeated visits due to poor initial diagnostic data.
-The Solution: A structured Conversational AI designed to conduct "debriefing interviews" using 8D/Root Cause Analysis (RCA) methodologies to extract and digitize high-value technical insights.
-🧠 Core Features
-Multi-Agent Simulation: A Python-based environment where two LLMs interact (Agent 1: Simulated Technician vs. Agent 2: AI Assistant).
-Behavioral Archetypes: Stress-testing the conversation logic against 4 distinct user profiles (Collaborative, Reluctant, Unstructured, and Technical Purist).
-Iterative Prompt Engineering: Evolution of 5 different prompting strategies (Approaches A to E) to find the optimal balance between procedural rigor and conversational fluidity.
-LLM-as-a-Judge: An automated evaluation pipeline using Gemini Pro to score 324 interactions across custom UX metrics.
-📂 Repository Structure
-The project is divided into two main functional modules:
-1. 🤖 Generation Module (/generazione_conversazioni)
-Contains the scripts to run the multi-agent simulations.
-run_A.py, run_B.py, run_C.py: Initial test scripts for basic prompting philosophies.
-run_D_E.py: The final optimized "Hybrid Prompt" logic (The Winner).
-config_matrix.json: The experimental matrix defining scenarios and archetypes.
-2. ⚖️ Evaluation Module (/valutazione_conversazioni)
-Contains the infrastructure for the automated analysis.
-vault.py: The "Judge Agent" script that processes conversation logs.
-evaluation_rubric/: Detailed metrics and scoring criteria used by the AI Judge.
-🛠 Tech Stack
-Language: Python
-AI Models: Google Gemini 2.5 Flash Lite (Generation) & Gemini Pro (Evaluation)
-Frameworks: Pydantic (Data Validation), Itertools (Matrix Generation)
-Workflow: AI-Augmented Development. I leveraged LLMs to assist in the programming and debugging of this simulation environment, focusing on high-level conversational architecture and data structure.
-📊 Key Results
-97.22% Success Rate achieved with Approach E (Hybrid Design + High-Reasoning Model).
-17% Efficiency Gain in conversational turns compared to baseline models.
-Structured Output: Every conversation results in a structured JSON file, ready for corporate CRM integration.
-📄 Final Note
-This project demonstrates how Conversational UX is a synergy between Human-Centered Design and Computational Reasoning. By engineering the logic and stress-testing the behavior, we can transform "silent" expertise into a strategic digital asset.
+# Capitalizing Tacit Knowledge: An AI Conversational Framework for Industrial Maintenance
+
+### 🚀 Applied UX Research & AI-Augmented Prototyping
+*A Master’s Thesis project focused on bridging the "Information Asymmetry" through structured AI-driven debriefings.*
+
+---
+
+## 📌 01. Project Overview
+In high-tech industrial maintenance, senior technicians possess **tacit knowledge** ("expert tricks") that is rarely documented. Current reporting is often shallow, leading to the **"Double-Trip Syndrome"**: repeated visits due to poor diagnostic data.
+
+**The Mission:** I designed a **Conversational AI Assistant** that interviews technicians post-intervention, using **Root Cause Analysis (RCA)** methodologies to transform natural speech into strategic digital assets.
+
+---
+
+## 🧠 02. Methodology & Design Strategies
+
+### 👥 Behavioral Archetypes (Stress-Testing)
+To ensure system robustness, the conversational logic was validated against 4 simulated user profiles:
+*   **The Collaborative Expert:** Detailed and structured (Benchmark).
+*   **The Reluctant Veteran:** Minimalist and skeptical (Testing proactive elicitation).
+*   **The Unstructured Technician:** Vague and disorganized (Testing cognitive scaffolding).
+*   **The Technical Purist:** Hyper-accurate and jargon-heavy (Testing lexical adaptation).
+
+### ✍️ Prompt Engineering Evolution
+The project involved an iterative design of 5 prompting strategies:
+*   **Approaches A, B, C:** Testing Procedural, Outcome-led, and Few-Shot philosophies.
+*   **Approach D:** Implementation of a "Hybrid Prompt" on a standard model.
+*   **Approach E (Winner):** The "Hybrid Prompt" paired with high-level reasoning models, achieving a **97.22% Success Rate**.
+
+---
+
+## 🛠 03. Technical Implementation
+
+### 🤖 Multi-Agent Simulation Environment
+I developed a functional testing infrastructure in **Python** using an **AI-augmented coding workflow**.
+*   **Twin-Agent Setup:** A simulated interaction between a "Technician Agent" and an "Assistant Agent".
+*   **324 Interactions:** A large-scale automated stress-test matrix covering various failure scenarios and information gaps.
+
+### ⚖️ LLM-as-a-Judge Evaluation
+To eliminate human bias, I engineered an automated evaluation pipeline:
+*   **Judge Agent:** Powered by Gemini Pro with specific UX metrics.
+*   **Logic Tracing:** Used **Chain-of-Thought (CoT)** reasoning to provide a logical justification for every score assigned.
+
+---
+
+## 📂 04. Repository Structure
+
+### 📁 `generazione_conversazioni/`
+Contains the core simulation logic.
+*   `run_A.py`, `run_B.py`, `run_C.py`: Scripts for initial baseline testing.
+*   **`run_D_E.py`**: The production-ready script for the final optimized Hybrid logic.
+*   `config_matrix.json`: The experimental matrix defining the 324 unique test cases.
+
+### 📁 `valutazione_conversazioni/`
+The automated analysis engine.
+*   `vault.py`: The "Judge" script that processes logs and calculates performance metrics.
+*   `data_outputs/`: (Where stored) Structured JSON and CSV logs for quantitative analysis.
+
+---
+
+## 📊 05. Key Results & UX Impact
+
+*   **+44% Diagnostic Success:** Compared to traditional rule-based prompting.
+*   **+47% Protocol Adherence:** Near-perfect execution of the 8D/RCA methodology (4.83/5).
+*   **17% Efficiency Gain:** Significant reduction in conversational turns without information loss.
+*   **Interdependency Discovery:** Proved that high-fidelity Conversational UX requires a precise alignment between **Prompt Architecture** and **Computational Reasoning Power**.
+
+---
+
+## 💻 06. Tech Stack
+*   **Language:** Python
+*   **Models:** Google Gemini 2.5 Flash Lite & Gemini Pro
+*   **Data Formats:** JSON (Logs), CSV (Analysis)
+*   **Validation Frameworks:** Pydantic
+
+---
+
+## ✉️ 07. Contacts & Links
+*   **UX Designer:** Melania Balestri
+*   **Full Case Study:** [Link to your Portfolio]
+*   **LinkedIn:** [Link to your LinkedIn]
+
+---
+*Developed as part of the Master’s Degree in Communication Strategies & Techniques - University of Siena.*
